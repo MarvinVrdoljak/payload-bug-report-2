@@ -108,7 +108,7 @@ export interface Config {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
   };
-  locale: null;
+  locale: 'en' | 'de';
   user: User & {
     collection: 'users';
   };
@@ -148,6 +148,8 @@ export interface UserAuthOperations {
 export interface Page {
   id: string;
   title: string;
+  dateLocalized?: string | null;
+  dateNotLocalized?: string | null;
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
@@ -987,6 +989,8 @@ export interface PayloadMigration {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  dateLocalized?: T;
+  dateNotLocalized?: T;
   hero?:
     | T
     | {

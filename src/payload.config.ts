@@ -22,6 +22,7 @@ const dirname = path.dirname(filename)
 
 import { en } from '@payloadcms/translations/languages/en'
 import { de } from '@payloadcms/translations/languages/de'
+import i18nextConfig from './next-i18next.config.js'
 
 export default buildConfig({
   admin: {
@@ -91,6 +92,18 @@ export default buildConfig({
       },
     },
     tasks: [],
+  },
+
+  // Add Loalization
+  localization: {
+    locales: i18nextConfig.i18n.locales.map((locale) => {
+      return {
+        code: locale,
+        label: locale,
+        fallbackLocale: 'none',
+      }
+    }),
+    defaultLocale: i18nextConfig.i18n.defaultLocale,
   },
   i18n: {
     fallbackLanguage: 'en',

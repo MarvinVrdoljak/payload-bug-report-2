@@ -63,6 +63,8 @@ export const Pages: CollectionConfig<'pages'> = {
       type: 'text',
       required: true,
     },
+    { name: 'dateLocalized', type: 'date', localized: true },
+    { name: 'dateNotLocalized', type: 'date' },
     {
       type: 'tabs',
       tabs: [
