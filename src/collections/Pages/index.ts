@@ -20,6 +20,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { slateEditor } from '@payloadcms/richtext-slate'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -63,8 +64,17 @@ export const Pages: CollectionConfig<'pages'> = {
       type: 'text',
       required: true,
     },
-    { name: 'dateLocalized', type: 'date', localized: true },
-    { name: 'dateNotLocalized', type: 'date' },
+    {
+      name: 'slateLocalized',
+      type: 'richText',
+      localized: true,
+      editor: slateEditor({}),
+    },
+    {
+      name: 'slateNotLocalized',
+      type: 'richText',
+      editor: slateEditor({}),
+    },
     {
       type: 'tabs',
       tabs: [

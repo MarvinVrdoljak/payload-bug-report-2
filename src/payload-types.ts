@@ -148,8 +148,16 @@ export interface UserAuthOperations {
 export interface Page {
   id: string;
   title: string;
-  dateLocalized?: string | null;
-  dateNotLocalized?: string | null;
+  slateLocalized?:
+    | {
+        [k: string]: unknown;
+      }[]
+    | null;
+  slateNotLocalized?:
+    | {
+        [k: string]: unknown;
+      }[]
+    | null;
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
@@ -593,21 +601,11 @@ export interface Form {
             blockType: 'email';
           }
         | {
-            message?: {
-              root: {
-                type: string;
-                children: {
-                  type: string;
-                  version: number;
+            message?:
+              | {
                   [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
+                }[]
+              | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'message';
@@ -708,21 +706,11 @@ export interface Form {
         /**
          * Enter the message that should be sent in this email.
          */
-        message?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
+        message?:
+          | {
               [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -989,8 +977,8 @@ export interface PayloadMigration {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
-  dateLocalized?: T;
-  dateNotLocalized?: T;
+  slateLocalized?: T;
+  slateNotLocalized?: T;
   hero?:
     | T
     | {
